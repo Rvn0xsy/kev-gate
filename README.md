@@ -102,6 +102,12 @@ environment:
 - 默认只拦 `bash`，`GATE_TOOLS` 可扩到 `write`、`edit` 等，state 构造需按工具自行适配。
 - 门禁员是概率不是真理，评测显示漏报随训练数据量下降（100 步 800 样本时 14 条越界抓 9 条），上生产前先在自己的场景里重测。
 
+## 文章
+
+配套博客《给渗透测试 Agent 配一个门禁员》，记录了这个扩展背后的完整实验：ScopeJudge 数据集构造、Kev-4B 的 MPS 微调踩坑、评测方法与九条绕过样例实测。
+
+<https://payloads.online/archivers/2026-11-18/jev-gatekeeper/>
+
 ## 致谢
 
 - [Kev](https://github.com/jaredpalmer/kev)（Apache-2.0）与 [ScopeJudge](https://arxiv.org/abs/2607.07774)（dreadnode）— 前者是可自训的开源决策模型家族，后者提供了形式化与标注数据
