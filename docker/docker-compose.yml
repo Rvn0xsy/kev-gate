@@ -1,0 +1,31 @@
+services:
+  gate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rvn0xsy/kev-gate:latest
+    container_name: kev-gate
+    ports:
+      - "8010:8010"
+    environment:
+      - GATE_RUN=jaredpalmer/kev-4b
+      - HF_HUB_DISABLE_PROGRESS_BARS=1
+      # 首次拉 8.5G 权重需要代理时，取消注释并按需改端口
+      # - HTTPS_PROXY=http://host.docker.internal:7897
+      # 服务自有微调权重：挂载目录后指向它
+      # - GATE_RUN=/models/scope-4b-100step
+    volumes:
+      - hf-cache:/data/hf
+      # - /path/to/your/checkpoint:/models/scope-4b-100step:ro
+    restart: unless-stopped
+    # GPU VPS 且装好 NVIDIA Container Toolkit 后打开：
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  hf-cache:
