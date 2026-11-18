@@ -91,6 +91,10 @@ environment:
   - GATE_RUN=/models/scope-4b-100step
 ```
 
+## benchmark
+
+- `benchmark/evasion-samples.json`：九条手工绕过样例（借授权主机分阶段投递、门禁本体攻击、scope 污染、base64 链、变量间接引用、python 包装、写脚本执行、DNS 外带、对照组）及微调模型实测概率，配合 `scripts/test-gate.py --scope scope.md` 复跑。欢迎提交更刁钻的样例。
+
 ## 已知边界
 
 - 默认 fail-open：门禁服务挂掉时放行并附提示，生产建议 `GATE_FAIL_CLOSED=1`。
